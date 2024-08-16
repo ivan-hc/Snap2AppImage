@@ -17,7 +17,7 @@ _wget_version_usage() {
 
 # DOWNLOAD APPIMAGETOOL
 if ! test -f ./appimagetool; then
-	_wget_version_usage "$(wget -q https://api.github.com/repos/probonopd/go-appimage/releases -O - | sed 's/"/ /g; s/ /\n/g' | grep -o 'https.*continuous.*tool.*86_64.*mage$')" -O appimagetool
+	wget -q https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -O appimagetool
 	chmod a+x ./appimagetool
 fi
 
@@ -73,6 +73,6 @@ EOF
 chmod a+x ./"$APP".AppDir/AppRun
 
 # CONVERT THE APPDIR INTO AN APPIMAGE
-ARCH=x86_64 VERSION=$(./appimagetool -v | grep -o '[[:digit:]]*') ./appimagetool -s ./"$APP".AppDir
+ARCH=x86_64 ./appimagetool --comp zstd --mksquashfs-opt -Xcompression-level --mksquashfs-opt 20 ./"$APP".AppDir
 cd ..
 mv ./tmp/*.AppImage ./"$APPNAME"-"$VERSION"-x86_64.AppImage
