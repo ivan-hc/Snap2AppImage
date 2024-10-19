@@ -12,7 +12,7 @@ Install `squashfs-tools` from your system package manager.
 wget -q https://raw.githubusercontent.com/ivan-hc/Snap2AppImage/main/snap2appimage.sh
 chmod a+x snap2appimage.sh
 ```
-2. Replace "APP=SAMPLE" with "APP=appmane" (where "appname" is the name of the Snap package you want to convert to an AppImage)
+2. Replace "`APP=SAMPLE`" with "`APP=appname`" (where "`appname`" is the name of the Snap package you want to convert to an AppImage)
 3. run the script wherever you want
 ```
 ./snap2appimage.sh
